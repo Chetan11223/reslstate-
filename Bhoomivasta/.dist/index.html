@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BhumiVista Structures — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-bar"></div>
+      <p>BhumiVista Structures</p>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in">
+      <div class="logo-wrap">
+        <img src="https://bhumivista.com/wp-content/uploads/2024/08/bhumi_vista111.png"
+             alt="BhumiVista Structures Logo"
+             class="logo"
+             onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';" />
+        <div id="logo-fallback" class="logo-fallback">BV</div>
+      </div>
+      <p class="tagline slide-up">Building the Future, Brick by Brick</p>
+      <h1 class="coming-soon slide-up delay-1">Coming Soon</h1>
+      <p class="subtext slide-up delay-2">We are working hard to bring something amazing.</p>
+
+      <!-- Countdown -->
+      <div class="countdown slide-up delay-3" id="countdown">
+        <div class="count-block">
+          <span id="days">00</span>
+          <label>Days</label>
+        </div>
+        <div class="count-sep">:</div>
+        <div class="count-block">
+          <span id="hours">00</span>
+          <label>Hours</label>
+        </div>
+        <div class="count-sep">:</div>
+        <div class="count-block">
+          <span id="minutes">00</span>
+          <label>Minutes</label>
+        </div>
+        <div class="count-sep">:</div>
+        <div class="count-block">
+          <span id="seconds">00</span>
+          <label>Seconds</label>
+        </div>
+      </div>
+
+      <!-- Email Form -->
+      <form class="email-form slide-up delay-4" id="notifyForm">
+        <input type="email" id="emailInput" placeholder="Enter your email address" required />
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="form-msg" id="formMsg"></p>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="section-label fade-in-scroll">Who We Are</div>
+      <h2 class="fade-in-scroll">Crafting Spaces.<br/>Building Trust.</h2>
+      <p class="fade-in-scroll">
+        BhumiVista Structures is dedicated to delivering high-quality construction,
+        infrastructure, and development projects with innovation and trust. From
+        residential landmarks to large-scale infrastructure, we build with precision,
+        passion, and purpose.
+      </p>
+      <div class="pillars fade-in-scroll">
+        <div class="pillar">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Infrastructure</span>
+        </div>
+        <div class="pillar">
+          <i class="fa-solid fa-house-chimney"></i>
+          <span>Residential</span>
+        </div>
+        <div class="pillar">
+          <i class="fa-solid fa-city"></i>
+          <span>Real Estate</span>
+        </div>
+        <div class="pillar">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <span>Safety First</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social + Footer -->
+  <footer class="footer">
+    <div class="social-links fade-in-scroll">
+      <a href="https://www.instagram.com/chetan_rao9999/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/chetan-yadav-582491335/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.youtube.com/@chetanyadav9847" target="_blank" rel="noopener" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+    <p class="copyright">© 2026 BhumiVista Structures Construct. All rights reserved.</p>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
