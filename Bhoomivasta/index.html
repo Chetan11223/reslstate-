@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BhumiVista Structures — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#D4AF37;--gold-l:#f0d060;
+  --dark:#0d0d0d;--char:#1a1a1a;--mid:#2a2a2a;
+  --text:#e8e0d0;--muted:#9a9080;
+  --serif:'Playfair Display',serif;--sans:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:var(--sans);overflow-x:hidden}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.ld-inner{text-align:center}
+.ld-inner p{font-family:var(--serif);color:var(--gold);font-size:1rem;letter-spacing:.3em;text-transform:uppercase;margin-top:1rem}
+.ld-bar{width:180px;height:2px;background:var(--mid);border-radius:2px;overflow:hidden;margin:0 auto}
+.ld-bar::after{content:'';display:block;height:100%;width:0;background:var(--gold);animation:ldBar 1.8s ease forwards}
+@keyframes ldBar{to{width:100%}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat}
+.overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,.9) 0%,rgba(13,10,5,.83) 50%,rgba(30,20,5,.76) 100%)}
+.hero-body{position:relative;z-index:2;padding:2rem 1.5rem;max-width:780px;width:100%}
+
+/* LOGO */
+.logo-wrap{margin-bottom:1.5rem;display:flex;justify-content:center}
+.logo{width:110px;height:110px;object-fit:contain;border-radius:50%;border:2px solid var(--gold);padding:6px;
+  background:rgba(255,255,255,.05);box-shadow:0 0 30px rgba(212,175,55,.25)}
+.logo-fb{display:none;width:110px;height:110px;border-radius:50%;border:2px solid var(--gold);
+  background:var(--mid);align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:2rem;color:var(--gold);font-weight:700}
+
+.tagline{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.cs-title{font-family:var(--serif);font-size:clamp(3.5rem,10vw,7rem);font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#fff 40%,var(--gold-l) 100%);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
+.subtext{font-size:1rem;color:var(--muted);margin-bottom:2.5rem}
+
+/* COUNTDOWN */
+.countdown{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.cb{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:1rem 1.4rem;min-width:80px;backdrop-filter:blur(6px)}
+.cb span{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+.cb label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.sep{font-size:2rem;color:var(--gold);font-weight:700;margin-bottom:1.2rem;opacity:.6}
+
+/* FORM */
+.form{display:flex;max-width:480px;margin:0 auto;border-radius:50px;overflow:hidden;
+  border:1px solid rgba(212,175,55,.3);background:rgba(255,255,255,.04);backdrop-filter:blur(8px);transition:border-color .3s}
+.form:focus-within{border-color:var(--gold)}
+.form input{flex:1;background:transparent;border:none;outline:none;padding:.9rem 1.4rem;color:var(--text);font-family:var(--sans);font-size:.9rem}
+.form input::placeholder{color:var(--muted)}
+.form button{background:var(--gold);color:#000;border:none;padding:.9rem 1.8rem;font-family:var(--sans);
+  font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  transition:background .3s,transform .2s;white-space:nowrap}
+.form button:hover{background:var(--gold-l);transform:scale(1.02)}
+.form-msg{margin-top:.75rem;font-size:.82rem;color:var(--gold);min-height:1.2em}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;opacity:.45}
+.scroll-hint span{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ABOUT */
+.about{background:var(--char);padding:6rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.about::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold))}
+.about-inner{max-width:700px;margin:0 auto}
+.sec-label{font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.about h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.2;color:#fff;margin-bottom:1.5rem}
+.about p{font-size:1rem;line-height:1.8;color:var(--muted);max-width:580px;margin:0 auto 3rem}
+.pillars{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.pillar{display:flex;flex-direction:column;align-items:center;gap:.6rem;background:var(--mid);
+  border:1px solid rgba(212,175,55,.15);border-radius:12px;padding:1.4rem 1.8rem;min-width:110px;
+  transition:border-color .3s,transform .3s}
+.pillar:hover{border-color:var(--gold);transform:translateY(-4px)}
+.pillar i{font-size:1.5rem;color:var(--gold)}
+.pillar span{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:3rem 1.5rem 2rem;text-align:center;border-top:1px solid rgba(212,175,55,.1)}
+.socials{display:flex;justify-content:center;gap:1.2rem;margin-bottom:1.5rem}
+.socials a{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(212,175,55,.25);color:var(--muted);font-size:1rem;text-decoration:none;
+  transition:color .3s,border-color .3s,transform .3s,box-shadow .3s}
+.socials a:hover{color:var(--gold);border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 20px rgba(212,175,55,.2)}
+.copy{font-size:.78rem;color:var(--muted)}
+
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--gold);color:#000;padding:.75rem 1.8rem;border-radius:50px;
+  font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;
+  transition:opacity .4s,transform .4s;z-index:9998;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ANIMATIONS */
+.fade-in{animation:fadeIn 1s ease forwards}
+.slide-up{opacity:0;animation:slideUp .8s ease forwards}
+.d1{animation-delay:.2s}.d2{animation-delay:.4s}.d3{animation-delay:.6s}.d4{animation-delay:.8s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fis{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fis.on{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .cb{padding:.8rem 1rem;min-width:64px}.cb span{font-size:1.8rem}
+  .form{flex-direction:column;border-radius:12px}
+  .form button{border-radius:0 0 12px 12px;padding:.9rem}
+  .form input{border-radius:12px 12px 0 0}
+  .pillars{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="ld-inner">
+    <div class="ld-bar"></div>
+    <p>BhumiVista Structures</p>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-body fade-in">
+    <div class="logo-wrap">
+      <img class="logo" src="https://bhumivista.com/wp-content/uploads/2024/08/bhumi_vista111.png" alt="BhumiVista Logo"
+           onerror="this.style.display='none';document.getElementById('lf').style.display='flex'"/>
+      <div id="lf" class="logo-fb">BV</div>
+    </div>
+    <p class="tagline slide-up">Building the Future, Brick by Brick</p>
+    <h1 class="cs-title slide-up d1">Coming Soon</h1>
+    <p class="subtext slide-up d2">We are working hard to bring something amazing.</p>
+
+    <div class="countdown slide-up d3">
+      <div class="cb"><span id="days">00</span><label>Days</label></div>
+      <div class="sep">:</div>
+      <div class="cb"><span id="hours">00</span><label>Hours</label></div>
+      <div class="sep">:</div>
+      <div class="cb"><span id="mins">00</span><label>Minutes</label></div>
+      <div class="sep">:</div>
+      <div class="cb"><span id="secs">00</span><label>Seconds</label></div>
+    </div>
+
+    <form class="form slide-up d4" id="nf">
+      <input type="email" id="em" placeholder="Enter your email address" required/>
+      <button type="submit">Notify Me</button>
+    </form>
+    <p class="form-msg" id="fm"></p>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- About -->
+<section class="about">
+  <div class="about-inner">
+    <div class="sec-label fis">Who We Are</div>
+    <h2 class="fis">Crafting Spaces.<br/>Building Trust.</h2>
+    <p class="fis">BhumiVista Structures is dedicated to delivering high-quality construction, infrastructure, and development projects with innovation and trust. From residential landmarks to large-scale infrastructure, we build with precision, passion, and purpose.</p>
+    <div class="pillars fis">
+      <div class="pillar"><i class="fa-solid fa-building-columns"></i><span>Infrastructure</span></div>
+      <div class="pillar"><i class="fa-solid fa-house-chimney"></i><span>Residential</span></div>
+      <div class="pillar"><i class="fa-solid fa-city"></i><span>Real Estate</span></div>
+      <div class="pillar"><i class="fa-solid fa-helmet-safety"></i><span>Safety First</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="socials fis">
+    <a href="https://www.instagram.com/chetan_rao9999/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/chetan-yadav-582491335/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="https://www.youtube.com/@chetanyadav9847" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+  </div>
+  <p class="copy">© 2026 BhumiVista Structures Construct. All rights reserved.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Loader
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),1800));
+
+// Countdown to Jan 1 2027
+const target=new Date('2027-01-01T00:00:00').getTime();
+function tick(){
+  const d=target-Date.now();
+  if(d<=0){document.querySelector('.countdown').innerHTML='<p style="color:var(--gold);font-family:var(--serif);font-size:1.5rem">We are Live!</p>';return;}
+  document.getElementById('days').textContent=String(Math.floor(d/864e5)).padStart(2,'0');
+  document.getElementById('hours').textContent=String(Math.floor(d%864e5/36e5)).padStart(2,'0');
+  document.getElementById('mins').textContent=String(Math.floor(d%36e5/6e4)).padStart(2,'0');
+  document.getElementById('secs').textContent=String(Math.floor(d%6e4/1e3)).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+// Form
+document.getElementById('nf').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=document.getElementById('em').value.trim();
+  if(!v)return;
+  const s=JSON.parse(localStorage.getItem('bv_emails')||'[]');
+  if(!s.includes(v)){s.push(v);localStorage.setItem('bv_emails',JSON.stringify(s));}
+  document.getElementById('em').value='';
+  const t=document.getElementById('toast');
+  t.textContent="You're on the list! We'll notify you at launch.";
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+});
+
+// Scroll animations
+const obs=new IntersectionObserver(entries=>entries.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*120);obs.unobserve(e.target);}
+}),{threshold:.15});
+document.querySelectorAll('.fis').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
